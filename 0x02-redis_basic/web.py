@@ -12,6 +12,7 @@ count = 0
 def get_page(url: str) -> str:
     """track URL request and cache the result"""
 
+
     rd.set(f"cached:{url}", count)
     resp = requests.get(url)
     rd.incr(f"count:{url}")
