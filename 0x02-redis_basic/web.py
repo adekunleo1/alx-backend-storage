@@ -4,7 +4,7 @@
 
 import redis
 import requests
-r = redis.Redis()
+rd = redis.Redis()
 count = 0
 
 
@@ -12,10 +12,10 @@ def get_page(url: str) -> str:
     """track URL request and cache the result 
     with an expiration time of 10 seconds
     """
-    r.set(f"cached:{url}", count)
+    rd.set(f"cached:{url}", count)
     resp = requests.get(url)
-    r.incr(f"count:{url}")
-    r.setex(f"cached:{url}", 10, r.get(f"cached:{url}"))
+    rd.incr(f"count:{url}")
+    rd.setex(f"cached:{url}", 10, rd.get(f"cached:{url}"))
     return resp.text
 
 
