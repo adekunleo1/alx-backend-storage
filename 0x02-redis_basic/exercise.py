@@ -67,7 +67,7 @@ class Cache:
         self._redis[key] = data
         return key
 
-    def get(self, key: str, fn: Optional[Callable] 
+    def get(self, key: str, fn: Optional[Callable]
             = None) -> Union[str, bytes, int, float]:
         """convert the data back to desired format"""
         return fn(self._redis.get(key)) if fn else self._redis.get(key)
@@ -77,7 +77,7 @@ class Cache:
         return b.decode('utf-8')
 
     def get_int(self, b: bytes) -> int:
-        """convert bytes to int """
+        """convert bytes to int"""
         return int.from_bytes(b, sys.byteorder)
 
     def get_list(self, k: str) -> List:
