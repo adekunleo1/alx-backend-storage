@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""Implementing an expiring web cache and tracker
-"""
+"""Implement an expiring web cache and tracker"""
 
 
 import redis
