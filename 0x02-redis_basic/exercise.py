@@ -29,7 +29,7 @@ def call_history(method: Callable) -> Callable:
         """key list for wrapped function"""
         self._redis.rpush(input_list_key, str(args))
         data = method(self, *args, **kwargs)
-        self._redis.rpush(output_list_key, str(res))
+        self._redis.rpush(output_list_key, str(data))
         return data
 
     return set_history
