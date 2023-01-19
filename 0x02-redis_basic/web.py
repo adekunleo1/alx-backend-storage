@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-"""Implement an expiring web cache and tracker"""
-
-
+"""Implement an expiring web cache and tracker
+"""
 import redis
 import requests
 rd = redis.Redis()
@@ -9,7 +8,7 @@ count = 0
 
 
 def get_page(url: str) -> str:
-    """track URL request and cache the result 
+    """track URL request and cache the result
     with an expiration time of 10 seconds
     """
     rd.set(f"cached:{url}", count)
